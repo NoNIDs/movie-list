@@ -25,3 +25,9 @@ code {
   background-color: rgb(252, 14, 14);
   color: rgb(204, 204, 204);
 }
+.nav-link {
+  cursor: pointer;
+}
+.nav-link:hover {
+  color: #007bff;
+}

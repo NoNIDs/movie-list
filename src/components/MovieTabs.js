@@ -17,7 +17,7 @@ const MovieTabs = props => {
       <li className="nav-item">
         <div
           className={getClassLink("popularity.desc")}
-          onclick={handleClick("popularity.desc")}
+          onСlick={handleClick("popularity.desc")}
         >
           Popularity desc
         </div>
@@ -25,7 +25,7 @@ const MovieTabs = props => {
       <li className="nav-item">
         <div
           className={getClassLink("revenue.desc")}
-          onclick={handleClick("revenue.desc")}
+          onСlick={handleClick("revenue.desc")}
         >
           Revenue desc
         </div>
@@ -33,7 +33,7 @@ const MovieTabs = props => {
       <li className="nav-item">
         <div
           className={getClassLink("vote_avetage.desc")}
-          onclick={handleClick("vote_avetage.desc")}
+          onСlick={handleClick("vote_avetage.desc")}
         >
           Vote avetage desc
         </div>
