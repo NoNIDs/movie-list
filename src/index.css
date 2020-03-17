@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.tabs {
+  margin: 1rem 0;
+  padding: 1rem 0;
+}
+.del_btn {
+  margin-top: 0.5rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+.del_btn:hover {
+  background-color: rgb(252, 14, 14);
+  color: rgb(204, 204, 204);
+}
