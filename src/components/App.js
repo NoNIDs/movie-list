@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MovieItem from "./MovieItem";
 import MovieTabs from "./MovieTabs";
 import { API_URL, API_KEY_3 } from "../utils/api";
+import Pagination from "./Pagination";
 
 class App extends Component {
   constructor() {
@@ -9,24 +10,45 @@ class App extends Component {
     this.state = {
       movies: [],
       moviesWillWatch: [],
-      sort_by: "popularity.desc"
+      sort_by: "popularity.desc",
+      currentPage: 1,
+      totalPages: 5,
     };
   }
 
   componentDidMount() {
+    this.getMovies();
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.sort_by !== this.state.sort_by || prevState.currentPage !== this.state.currentPage) {
+      this.getMovies();
+    }
+  };
+
+  getMovies = () => {
     fetch(
-      `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}`
+      `${API_URL}/discover/movie?api_key=${API_KEY_3}&page=${this.state.currentPage}&sort_by=${this.state.sort_by}`
     )
       .then(response => {
         console.log("then", response);
         return response.json();
       })
       .then(data => {
+        console.log("data_server", data);
         this.setState({
-          movies: data.results
+          movies: data.results.filter(m => m),
+          totalPages: data.total_pages
         });
       });
   }
+
+  onChangePage = page => {
+    this.setState({
+      currentPage: page,
+    })
+  }
+
   removeMovie = id => {
     const { movies } = this.state;
     this.setState({
@@ -60,7 +82,7 @@ class App extends Component {
 
   render() {
     console.log("Data", this.state);
-    const { movies, moviesWillWatch, sort_by } = this.state;
+    const { movies, moviesWillWatch, sort_by, totalPages } = this.state;
     const count = moviesWillWatch.length;
     return (
       <div className="container">
@@ -86,11 +108,12 @@ class App extends Component {
                 );
               })}
             </div>
+            <Pagination totalPages={totalPages} onChangePage={this.onChangePage}></Pagination>
           </div>
           <div className="col-3">
-            <p className="willwatch_title">Will watch: {count}</p>
+            <p className="willWatch_title">Will watch: {count}</p>
             {moviesWillWatch.map(movie => {
-              return <p className="willwatch_item">{movie.title}</p>;
+              return <p className="willWatch_item">{movie.title}</p>;
             })}
           </div>
         </div>

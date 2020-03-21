@@ -50,7 +50,7 @@ class MovieItem extends Component {
             </button>
           )}
         </div>
-        <button className='del_btn'onClick={removeMovie.bind(null, movie.id)}>Delete movie</button>
+        <button className='del_btn' onClick={removeMovie.bind(null, movie.id)}>Delete movie</button>
       </div>
     );
   }

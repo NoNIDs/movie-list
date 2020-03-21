@@ -31,3 +31,23 @@ code {
 .nav-link:hover {
   color: #007bff;
 }
+.pag_container {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.pag_item {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.pag_active {
+  color: #fff;
+  background-color: #007bff;
+}
