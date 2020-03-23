@@ -13,6 +13,7 @@ class App extends Component {
       sort_by: "popularity.desc",
       currentPage: 1,
       totalPages: 5,
+      pageLimit: 5
     };
   }
 
@@ -76,13 +77,13 @@ class App extends Component {
 
   updateSortBy = value => {
     this.setState({
-      sort_by: value
+      sort_by: valueя
     });
   };
 
   render() {
     console.log("Data", this.state);
-    const { movies, moviesWillWatch, sort_by, totalPages } = this.state;
+    const { movies, moviesWillWatch, sort_by, pageLimit } = this.state;
     const count = moviesWillWatch.length;
     return (
       <div className="container">
@@ -108,7 +109,7 @@ class App extends Component {
                 );
               })}
             </div>
-            <Pagination totalPages={totalPages} onChangePage={this.onChangePage}></Pagination>
+            <Pagination pageLimit={pageLimit} onChangePage={this.onChangePage}></Pagination>
           </div>
           <div className="col-3">
             <p className="willWatch_title">Will watch: {count}</p>

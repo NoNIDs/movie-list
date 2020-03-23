@@ -4,13 +4,14 @@ class Pagination extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 1
+      currentPage: 1,
+      startPagPage: 1
     };
   }
 
-  genPageList = totalPages => {
+  genPageList = (startPagPage, pageLimit) => {
     let arrPageList = [];
-    for(let i = 1; i <= totalPages; i++) {
+    for(let i = startPagPage, count = 0; count <= pageLimit; i++) {
       arrPageList.push(i);
     }
     return [...arrPageList]
@@ -26,9 +27,9 @@ class Pagination extends Component {
   }
 
   render() {
-    const {totalPages} = this.props;
-    const {currentPage} = this.state;
-    const pages = this.genPageList(totalPages);
+    const {pageLimit} = this.props;
+    const {currentPage, startPagPage} = this.state;
+    const pages = this.genPageList(startPagPage, pageLimit);
     return (
       <ul className='pag_container'>
         {pages.map((page, index) => {
